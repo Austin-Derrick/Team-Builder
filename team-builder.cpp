@@ -48,6 +48,14 @@ public:
 	virtual void do_work() override { this->manage_team(); }
 };
 
+class project_manger : public manager
+{
+public:
+	project_manageR() = delete;
+	project_manager(const char* n) : manager(n, "Project Manager") {}
+	virtual void manage_team() override { cout << "manages a team of developers" << endl; }
+};
+
 int main(int argc, const char* argv[]) 
 {
 	return 0;
