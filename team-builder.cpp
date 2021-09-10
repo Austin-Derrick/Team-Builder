@@ -56,6 +56,23 @@ public:
 	virtual void manage_team() override { cout << "manages a team of developers" << endl; }
 };
 
+void print_team(IWork* mgr)
+{
+	cout << mgr->get_name() << " is "
+		<< mgr->get_position() << " and ";
+	IManage* manager = dynamic_cast<IManage*>(mgr);
+	if (manager != nullptr)
+	{
+		cout << "manages a team of: " << endl;
+		for (auto team_member : manager->get_team())
+		{
+			cout << team_member->get_name() << " "
+				<< team_member->get_position() << endl;
+		}
+	}
+	else { cout << "is not a manager" << endl; }
+}
+
 int main(int argc, const char* argv[]) 
 {
 	return 0;
