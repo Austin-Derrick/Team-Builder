@@ -36,6 +36,16 @@ public:
 	virtual void do_work() override { cout << "Works" << endl; }
 };
 
+class manager : public worker, public IManage {
+	vector<unique_ptr<IWork>> team;
+public:
+	manager() = delete;
+	manager(const char* n, const char* p) : worker(n, p) {}
+	const vector<unique_ptr<IWork>>& get_team() { return team; }
+	virtual void manage_team() override { cout << "manages a team" << endl; }
+	virtual void do_work() override { this->manage_team(); }
+};
+
 int main(int argc, const char* argv[]) 
 {
 	return 0;
