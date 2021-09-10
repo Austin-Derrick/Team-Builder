@@ -43,6 +43,8 @@ public:
 	manager(const char* n, const char* p) : worker(n, p) {}
 	const vector<unique_ptr<IWork>>& get_team() { return team; }
 	virtual void manage_team() override { cout << "manages a team" << endl; }
+	virtual void add_team_member(IWork* worker) 
+		{ team.push_back(unique_ptr<IWork>(worker)); }
 	virtual void do_work() override { this->manage_team(); }
 };
 
